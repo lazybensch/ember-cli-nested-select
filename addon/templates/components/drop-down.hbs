@@ -1,1 +1,8 @@
-dropdown
+{{input}}
+<div class='list'>
+  <ol>
+    {{#each content as |entry|}}
+      <li>{{entry.label}}</li>
+    {{/each}}
+  </ol>
+</div>
