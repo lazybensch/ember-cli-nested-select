@@ -7,8 +7,17 @@
 
 <ol class='list'>
   {{#each filteredContent as |entry|}}
-    <li {{action 'select' entry on='click'}}>{{entry.label}}</li>
+    <li {{action 'select' entry on='click'}}>
+      <label>
+        {{entry.label}}
+      </label>
+      {{#if entry.children}}
+        <i>n</i>
+      {{/if}}
+    </li>
   {{else}}
-    <li>nothing found for '{{query}}'</li>
+    <li>
+      nothing found for '{{query}}'
+    </li>
   {{/each}}
 </ol>
