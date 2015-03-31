@@ -37,5 +37,8 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "dependencies": {
+    "ember-cli-htmlbars": "^0.7.4"
   }
 }
