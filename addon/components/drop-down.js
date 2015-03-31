@@ -21,6 +21,15 @@ export default Ember.Component.extend({
 
   filteredContent: computedFilterByQuery('convertedContent', 'label', 'query').readOnly(),
 
+  preview: function() {
+    var preview = this.get('filteredContent.firstObject.label');
+    var query = this.get('query');
+
+    if (!preview) { return query; }
+    preview = preview.split(query).join('<b>'+ query +'</b>');
+    return Ember.String.htmlSafe(preview);
+  }.property('filteredContent.firstObject.label', 'query'),
+
   wrap: function(entry) {
     return {
       id: Ember.get(entry, this.get('idKey')),

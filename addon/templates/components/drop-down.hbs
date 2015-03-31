@@ -2,13 +2,13 @@
 
 <i>s</i>
 {{input value=query}}
-<label>
-  {{filteredContent.firstObject.label}}
-</label>
+<label> {{preview}} </label>
 <i {{action 'revert'}}>clear</i>
 
 <ol class='list'>
   {{#each filteredContent as |entry|}}
     <li {{action 'select' entry on='click'}}>{{entry.label}}</li>
+  {{else}}
+    <li>nothing found for '{{query}}'</li>
   {{/each}}
 </ol>
