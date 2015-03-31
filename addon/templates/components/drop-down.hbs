@@ -1,8 +1,11 @@
+{{input value=selected.label readonly=true}}
+
+<i>s</i>
 {{input value=query}}
-<div class='list'>
-  <ol>
-    {{#each filteredContent as |entry|}}
-      <li>{{entry.label}}</li>
-    {{/each}}
-  </ol>
-</div>
+<i {{action 'revert'}}>clear</i>
+
+<ol class='list'>
+  {{#each filteredContent as |entry|}}
+    <li {{action 'select' entry on='click'}}>{{entry.label}}</li>
+  {{/each}}
+</ol>

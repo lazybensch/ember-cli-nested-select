@@ -11,11 +11,15 @@ export default Ember.Component.extend({
   labelKey: 'label',
   childrenKey: 'children',
 
-  convertedContent: Ember.computed.map('content', function(entry) {
-    return this.wrap(entry);
-  }),
+  _content: function() {
+    return this.get('selectedContent') || this.get('content');
+  }.property('content', 'selectedContent').readOnly(),
 
-  filteredContent: computedFilterByQuery('convertedContent', 'label', 'query'),
+  convertedContent: Ember.computed.map('_content', function(entry) {
+    return this.wrap(entry);
+  }).readOnly(),
+
+  filteredContent: computedFilterByQuery('convertedContent', 'label', 'query').readOnly(),
 
   wrap: function(entry) {
     return {
@@ -35,5 +39,21 @@ export default Ember.Component.extend({
       'top': el.offset().top + el.height(),
       'left': el.offset().left,
     });
+  },
+
+  actions: {
+    revert: function() {
+      this.set('selectedContent', null);
+      this.set('selected', null);
+    },
+
+    select: function(entry) {
+      if (entry.children) {
+        this.set('selectedContent', entry.children);
+      } else {
+        this.set('selected', entry);
+      }
+    }
   }
+
 });
