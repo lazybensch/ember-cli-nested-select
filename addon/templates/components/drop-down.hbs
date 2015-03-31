@@ -1,7 +1,7 @@
-{{input}}
+{{input value=query}}
 <div class='list'>
   <ol>
-    {{#each content as |entry|}}
+    {{#each filteredContent as |entry|}}
       <li>{{entry.label}}</li>
     {{/each}}
   </ol>
