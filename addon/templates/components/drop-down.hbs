@@ -1,5 +1,5 @@
-{{#unless showList}}
-  {{input value=selected.label readonly=true action='toggleList' on='focus-in'}}
+{{#unless listVisible}}
+  {{input value=selected.label readonly=true action='showList' on='focus-in'}}
 {{else}}
   <i>s</i>
   {{input value=query action='quickSelect' on='insert-newline'}}

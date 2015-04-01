@@ -11,7 +11,17 @@ export default Ember.Component.extend({
   labelKey: 'label',
   childrenKey: 'children',
 
-  showList: false,
+  listVisible: false,
+  showList: function() {
+    this.set('listVisible', true);
+    var _this = this;
+    Ember.run.schedule('afterRender', function() {
+      _this.$().find('input').focus();
+    });
+  },
+  hideList: function() {
+    this.set('listVisible', false);
+  },
 
   _content: function() {
     return this.get('selectedContent') || this.get('content');
@@ -57,6 +67,7 @@ export default Ember.Component.extend({
     if (entry.children) {
       this.set('selectedContent', entry.children);
     } else {
+      this.hideList()
       this.set('selectedContent', null);
       this.set('selected', entry);
     }
@@ -64,12 +75,8 @@ export default Ember.Component.extend({
 
   actions: {
 
-    toggleList: function() {
-      this.toggleProperty('showList');
-      var _this = this;
-      Ember.run.schedule('afterRender', function() {
-        _this.$().find('input').focus();
-      });
+    showList: function() {
+      this.showList();
     },
 
     revert: function() {
