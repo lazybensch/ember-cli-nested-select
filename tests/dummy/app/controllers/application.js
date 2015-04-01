@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
+  selected: {id: 7, label: '1-3 - zwei' },
+
   list: [
     {id: 1, label: 'eins'},
     {id: 2, label: 'zwei', children: [
