@@ -50,18 +50,29 @@ export default Ember.Component.extend({
     });
   },
 
+  select: function(entry) {
+    this.set('query', null);
+    if (entry.children) {
+      this.set('selectedContent', entry.children);
+    } else {
+      this.set('selected', entry);
+    }
+  },
+
   actions: {
+
     revert: function() {
       this.set('selectedContent', null);
       this.set('selected', null);
+      this.set('query', null);
+    },
+
+    quickSelect: function() {
+      this.select( this.get('filteredContent.firstObject') );
     },
 
     select: function(entry) {
-      if (entry.children) {
-        this.set('selectedContent', entry.children);
-      } else {
-        this.set('selected', entry);
-      }
+      this.select(entry);
     }
   }
 
