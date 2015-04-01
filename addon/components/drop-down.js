@@ -33,6 +33,7 @@ export default Ember.Component.extend({
     var component = event.data.component;
 
     if (!target.hasClass('keep-drop-down') && !target.parents().hasClass('keep-drop-down')) {
+      component.set('selectedContent', null);
       component.set('listVisible', false);
     }
   },

@@ -2,7 +2,7 @@
   {{input value=selected.label readonly=true action='showList' on='focus-in'}}
 {{else}}
   <i>s</i>
-  {{input value=query action='quickSelect' on='insert-newline'}}
+  {{input value=query action='quickSelect' on='insert-newline' classNames='keep-drop-down'}}
   <label> {{preview}} </label>
   <i {{action 'revert'}}>clear</i>
 
