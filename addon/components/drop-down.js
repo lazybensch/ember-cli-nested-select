@@ -84,6 +84,7 @@ export default Ember.Component.extend({
     } else {
       this.set('selectedContent', null);
       this.set('selected', entry);
+      this.set('listVisible', false);
     }
   },
 
