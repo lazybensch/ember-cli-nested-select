@@ -19,8 +19,29 @@ export default Ember.Component.extend({
       _this.$().find('input').focus();
     });
   },
+
   hideList: function() {
     this.set('listVisible', false);
+  },
+
+  bindClickHandler: function() {
+    console.log('showList', this.get('listVisible'));
+    if (this.get('listVisible')) {
+      console.log('BIND');
+      Ember.$('body').bind('click.drop-down', {component: this}, this.clickHandler );
+    } else {
+      console.log('UNBIND');
+      Ember.$('body').unbind('click.drop-down');
+    }
+  }.observes('listVisible').on('didInsertElement'),
+
+  clickHandler: function(event) {
+    var target = Ember.$(event.target);
+    var component = event.data.component;
+
+    if (!Ember.isBlank(target.parents('body'))) {
+      component.set('listVisible', false);
+    }
   },
 
   _content: function() {
@@ -67,7 +88,7 @@ export default Ember.Component.extend({
     if (entry.children) {
       this.set('selectedContent', entry.children);
     } else {
-      this.hideList()
+      this.hideList();
       this.set('selectedContent', null);
       this.set('selected', entry);
     }
