@@ -25,12 +25,9 @@ export default Ember.Component.extend({
   },
 
   bindClickHandler: function() {
-    console.log('showList', this.get('listVisible'));
     if (this.get('listVisible')) {
-      console.log('BIND');
       Ember.$('body').bind('click.drop-down', {component: this}, this.clickHandler );
     } else {
-      console.log('UNBIND');
       Ember.$('body').unbind('click.drop-down');
     }
   }.observes('listVisible').on('didInsertElement'),
