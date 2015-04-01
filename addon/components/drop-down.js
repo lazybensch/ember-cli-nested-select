@@ -11,6 +11,8 @@ export default Ember.Component.extend({
   labelKey: 'label',
   childrenKey: 'children',
 
+  showList: false,
+
   _content: function() {
     return this.get('selectedContent') || this.get('content');
   }.property('content', 'selectedContent').readOnly(),
@@ -61,6 +63,14 @@ export default Ember.Component.extend({
   },
 
   actions: {
+
+    toggleList: function() {
+      this.toggleProperty('showList');
+      var _this = this;
+      Ember.run.schedule('afterRender', function() {
+        _this.$().find('input').focus();
+      });
+    },
 
     revert: function() {
       this.set('selectedContent', null);

@@ -1,23 +1,25 @@
-{{input value=selected.label readonly=true}}
+{{#unless showList}}
+  {{input value=selected.label readonly=true action='toggleList' on='focus-in'}}
+{{else}}
+  <i>s</i>
+  {{input value=query action='quickSelect' on='insert-newline'}}
+  <label> {{preview}} </label>
+  <i {{action 'revert'}}>clear</i>
 
-<i>s</i>
-{{input value=query action='quickSelect' on='insert-newline'}}
-<label> {{preview}} </label>
-<i {{action 'revert'}}>clear</i>
-
-<ol class='list'>
-  {{#each filteredContent as |entry|}}
-    <li {{action 'select' entry on='click'}}>
-      <label>
-        {{entry.label}}
-      </label>
-      {{#if entry.children}}
-        <i>n</i>
-      {{/if}}
-    </li>
-  {{else}}
-    <li>
-      nothing found for '{{query}}'
-    </li>
-  {{/each}}
-</ol>
+  <ol class='list'>
+    {{#each filteredContent as |entry|}}
+      <li {{action 'select' entry on='click'}}>
+        <label>
+          {{entry.label}}
+        </label>
+        {{#if entry.children}}
+          <i>n</i>
+        {{/if}}
+      </li>
+    {{else}}
+      <li>
+        nothing found for '{{query}}'
+      </li>
+    {{/each}}
+  </ol>
+{{/unless}}
