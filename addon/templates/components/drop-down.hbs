@@ -8,7 +8,7 @@
 
   <ol class='list'>
     {{#each filteredContent as |entry|}}
-      <li {{bind-attr class='entry.children:keep-drop-down'}} {{action 'select' entry on='click'}}>
+      <li class={{if entry.children 'keep-drop-down'}} {{action 'select' entry on='click'}}>
         <label>
           {{entry.label}}
         </label>
