@@ -55,6 +55,7 @@ export default Ember.Component.extend({
     if (entry.children) {
       this.set('selectedContent', entry.children);
     } else {
+      this.set('selectedContent', null);
       this.set('selected', entry);
     }
   },
