@@ -20,10 +20,6 @@ export default Ember.Component.extend({
     });
   },
 
-  hideList: function() {
-    this.set('listVisible', false);
-  },
-
   bindClickHandler: function() {
     if (this.get('listVisible')) {
       Ember.$('body').bind('click.drop-down', {component: this}, this.clickHandler );
@@ -36,7 +32,7 @@ export default Ember.Component.extend({
     var target = Ember.$(event.target);
     var component = event.data.component;
 
-    if (!Ember.isBlank(target.parents('body'))) {
+    if (!target.hasClass('keep-drop-down') && !target.parents().hasClass('keep-drop-down')) {
       component.set('listVisible', false);
     }
   },
@@ -85,7 +81,6 @@ export default Ember.Component.extend({
     if (entry.children) {
       this.set('selectedContent', entry.children);
     } else {
-      this.hideList();
       this.set('selectedContent', null);
       this.set('selected', entry);
     }
