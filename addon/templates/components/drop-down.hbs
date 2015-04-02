@@ -6,7 +6,7 @@
 {{/unless}}
 
 {{#if (and selected showRevert)}}
-  <i class='revert keep-drop-down drop-down-text' {{action 'revert'}}>x</i>
+  <i class='revert keep-drop-down drop-down-text' {{action 'revert'}}>{{fa-icon 'times'}}</i>
 {{/if}}
 
 <ol class='drop-down-list' hidden={{if listVisible false true}}>
@@ -16,7 +16,7 @@
         {{entry.label}}
       </label>
       {{#if entry.children}}
-        <i class='next'>></i>
+        <i class='next fa fa-chevron-right'></i>
       {{/if}}
     </li>
   {{else}}
