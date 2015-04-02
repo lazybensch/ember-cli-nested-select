@@ -1,4 +1,4 @@
-# Ember-cli-dropdown
+# Ember-cli-nested-select
 
 This README outlines the details of collaborating on this Ember addon.
 

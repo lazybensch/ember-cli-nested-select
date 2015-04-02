@@ -1,14 +1,14 @@
-.drop-down {
+.nested-select {
   position: relative;
   width: 200px;
 }
 
-.drop-down input {
+.nested-select input {
   width: 100%;
   box-sizing: border-box;
 }
 
-.drop-down label.preview {
+.nested-select label.preview {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid transparent;
@@ -17,7 +17,7 @@
   left: 0px;
 }
 
-.drop-down i.revert {
+.nested-select i.revert {
   cursor: pointer;
   box-sizing: border-box;
   position: absolute;
@@ -25,7 +25,7 @@
   right: 0px;
 }
 
-ol.drop-down-list {
+ol.nested-select-list {
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -37,11 +37,11 @@ ol.drop-down-list {
   border-top: none;
 }
 
-ol.drop-down-list li:hover {
+ol.nested-select-list li:hover {
   background: lightgray;
 }
 
-ol.drop-down-list li .next {
+ol.nested-select-list li .next {
   font-style: normal;
   float: right;
 }

@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import layout from '../templates/components/drop-down';
+import layout from '../templates/components/nested-select';
 import computedFilterByQuery from 'ember-cli-filter-by-query';
 
 export default Ember.Component.extend({
   layout: layout,
-  classNames: 'drop-down',
+  classNames: 'nested-select',
   classNameBindings: ['listVisible:open:closed'],
 
   idKey: 'id',
@@ -23,9 +23,9 @@ export default Ember.Component.extend({
 
   bindClickHandler: function() {
     if (this.get('listVisible')) {
-      Ember.$('body').bind('click.drop-down', {component: this}, this.clickHandler );
+      Ember.$('body').bind('click.nested-select', {component: this}, this.clickHandler );
     } else {
-      Ember.$('body').unbind('click.drop-down');
+      Ember.$('body').unbind('click.nested-select');
     }
   }.observes('listVisible').on('didInsertElement'),
 
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
     var target = Ember.$(event.target);
     var component = event.data.component;
 
-    if (!target.hasClass('keep-drop-down') && !target.parents().hasClass('keep-drop-down')) {
+    if (!target.hasClass('keep-nested-select') && !target.parents().hasClass('keep-nested-select')) {
       component.set('selectedContent', null);
       component.set('listVisible', false);
     }
@@ -69,7 +69,7 @@ export default Ember.Component.extend({
 
   didInsertElement: function() {
     var el = this.$();
-    var list = el.find('.drop-down-list');
+    var list = el.find('.nested-select-list');
     list.appendTo('body');
     list.css({
       'position': 'absolute',

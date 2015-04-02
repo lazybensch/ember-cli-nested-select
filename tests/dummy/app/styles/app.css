@@ -1,9 +1,9 @@
 
-.drop-down {
+.nested-select {
   margin: 50px;
 }
 
-.drop-down-text {
+.nested-select-text {
   font-family: 'Lucida Grande';
   font-size: 18px;
   font-style: normal;

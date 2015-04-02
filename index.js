@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-dropdown'
+  name: 'ember-cli-nested-select'
 };
