@@ -1,0 +1,48 @@
+.drop-down {
+  position: relative;
+  width: 200px;
+}
+
+.drop-down input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.drop-down label.preview {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.drop-down i.revert {
+  cursor: pointer;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+ol.drop-down-list {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: white;
+
+  border: 1px solid rgb(197, 197, 197);
+  border-top: none;
+}
+
+ol.drop-down-list li:hover {
+  background: lightgray;
+}
+
+ol.drop-down-list li .next {
+  font-style: normal;
+  float: right;
+}
+

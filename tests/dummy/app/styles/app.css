@@ -1,3 +1,14 @@
+
 .drop-down {
-  background: lightblue;
+  margin: 50px;
+}
+
+.drop-down-text {
+  font-family: 'Lucida Grande';
+  font-size: 18px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+
+  padding: 1em;
 }
