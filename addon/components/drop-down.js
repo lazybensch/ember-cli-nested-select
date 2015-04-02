@@ -74,6 +74,7 @@ export default Ember.Component.extend({
       'position': 'absolute',
       'top': el.offset().top + el.height(),
       'left': el.offset().left,
+      'width': el.width()
     });
   },
 
