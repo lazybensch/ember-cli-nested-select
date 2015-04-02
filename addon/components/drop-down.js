@@ -5,6 +5,7 @@ import computedFilterByQuery from 'ember-cli-filter-by-query';
 export default Ember.Component.extend({
   layout: layout,
   classNames: 'drop-down',
+  classNameBindings: ['listVisible:open:closed'],
 
   idKey: 'id',
   infoKey: 'info',
