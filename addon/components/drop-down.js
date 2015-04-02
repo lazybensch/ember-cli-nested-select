@@ -68,7 +68,7 @@ export default Ember.Component.extend({
 
   didInsertElement: function() {
     var el = this.$();
-    var list = el.find('.list');
+    var list = el.find('.drop-down-list');
     list.appendTo('body');
     list.css({
       'position': 'absolute',
@@ -76,6 +76,14 @@ export default Ember.Component.extend({
       'left': el.offset().left,
       'width': el.width()
     });
+  },
+
+  mouseEnter: function() {
+    this.set('showRevert', true);
+  },
+
+  mouseLeave: function() {
+    this.set('showRevert', false);
   },
 
   select: function(entry) {

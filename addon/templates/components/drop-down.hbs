@@ -3,10 +3,13 @@
 {{else}}
   {{input value=query action='quickSelect' on='insert-newline' classNames='keep-drop-down'}}
   <label class='preview'> {{preview}} </label>
-  <i class='revert keep-drop-down' {{action 'revert'}}>clear</i>
 {{/unless}}
 
-<ol class='list drop-down-list' hidden={{if listVisible false true}}>
+{{#if (and selected showRevert)}}
+  <i class='revert keep-drop-down' {{action 'revert'}}>x</i>
+{{/if}}
+
+<ol class='drop-down-list' hidden={{if listVisible false true}}>
   {{#each filteredContent as |entry|}}
     <li class={{if entry.children 'keep-drop-down'}} {{action 'select' entry on='click'}}>
       <label>
