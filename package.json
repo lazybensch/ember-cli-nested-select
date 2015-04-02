@@ -2,6 +2,7 @@
   "name": "ember-cli-nested-select",
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
+  "defaultBlueprint": "ember-cli-nested-select",
   "directories": {
     "doc": "doc",
     "test": "tests"
