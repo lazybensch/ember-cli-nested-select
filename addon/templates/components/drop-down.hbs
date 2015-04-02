@@ -1,25 +1,24 @@
 {{#unless listVisible}}
   {{input value=selected.label readonly=true action='showList' on='focus-in'}}
 {{else}}
-  <i>s</i>
   {{input value=query action='quickSelect' on='insert-newline' classNames='keep-drop-down'}}
-  <label> {{preview}} </label>
+  <label class='preview'> {{preview}} </label>
   <i {{action 'revert'}}>clear</i>
-
-  <ol class='list'>
-    {{#each filteredContent as |entry|}}
-      <li class={{if entry.children 'keep-drop-down'}} {{action 'select' entry on='click'}}>
-        <label>
-          {{entry.label}}
-        </label>
-        {{#if entry.children}}
-          <i>n</i>
-        {{/if}}
-      </li>
-    {{else}}
-      <li>
-        nothing found for '{{query}}'
-      </li>
-    {{/each}}
-  </ol>
 {{/unless}}
+
+<ol class='list' hidden={{if listVisible false true}}>
+  {{#each filteredContent as |entry|}}
+    <li class={{if entry.children 'keep-drop-down'}} {{action 'select' entry on='click'}}>
+      <label>
+        {{entry.label}}
+      </label>
+      {{#if entry.children}}
+        <i>n</i>
+      {{/if}}
+    </li>
+  {{else}}
+    <li>
+      nothing found for '{{query}}'
+    </li>
+  {{/each}}
+</ol>
