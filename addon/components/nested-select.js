@@ -60,6 +60,7 @@ export default Ember.Component.extend({
 
   wrap: function(entry) {
     return {
+      object: entry,
       id: Ember.get(entry, this.get('idKey')),
       info: Ember.get(entry, this.get('infoKey')),
       label: Ember.get(entry, this.get('labelKey')),
@@ -87,9 +88,17 @@ export default Ember.Component.extend({
     this.set('showRevert', false);
   },
 
+  value: function(key, value, previousValue) {
+    if (arguments.length > 1) {
+      this.set('selected', this.wrap(value));
+    } else {
+      return this.get('selected.object');
+    }
+  }.property('selected.object'),
+
   select: function(entry) {
     this.set('query', null);
-    if (entry.children) {
+    if (!Ember.isBlank(Ember.A(entry.children))) {
       this.set('selectedContent', entry.children);
     } else {
       this.set('selectedContent', null);
