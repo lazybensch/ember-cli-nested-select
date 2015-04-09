@@ -10,6 +10,7 @@ export default Ember.Component.extend({
   idKey: 'id',
   infoKey: 'info',
   labelKey: 'label',
+  valueKey: null,
   childrenKey: 'children',
 
   listVisible: false,
@@ -90,9 +91,17 @@ export default Ember.Component.extend({
 
   value: function(key, value, previousValue) {
     if (arguments.length > 1) {
+      if (this.get('valueKey')) {
+        value = this.get('content').findBy(this.get('valueKey'), value);
+      }
       this.set('selected', this.wrap(value));
+
     } else {
-      return this.get('selected.object');
+      if (this.get('valueKey')) {
+        return Ember.get(this.get('selected.object'), this.get('valueKey'));
+      } else {
+        return this.get('selected.object');
+      }
     }
   }.property('selected.object'),
 
